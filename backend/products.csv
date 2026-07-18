@@ -1,0 +1,11 @@
+product_id,name,category,brand,price,stock
+P001,Basmati Rice,Grocery,India Gate,120.00,500
+P002,Toor Dal,Grocery,Patanjali,95.00,300
+P003,Sunflower Oil,Grocery,Fortune,180.00,200
+P004,Amul Butter,Dairy,Amul,55.00,150
+P005,Full Cream Milk,Dairy,Amul,28.00,400
+P006,Wheat Flour,Grocery,Aashirvaad,45.00,350
+P007,Sugar,Grocery,Generic,42.00,250
+P008,Salt,Grocery,Tata,20.00,180
+P009,Biscuits,Snacks,Parle-G,10.00,600
+P010,Maggi Noodles,Snacks,Nestle,14.00,400
