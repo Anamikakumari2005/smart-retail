@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -20,11 +22,11 @@ app = FastAPI(
     title="Smart Retail Inventory",
     version="1.0.0"
 )
-
+origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",")]
 # CORS - React ko access de
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -51,6 +53,12 @@ def run_anomaly_detection():
         count = 0
         for product_id, avg_qty, max_qty in stats:
             if max_qty > (avg_qty * 2):
+                exists = db.query(Anomaly).filter(
+                    Anomaly.product_id == product_id,
+                    Anomaly.anomaly_type == 'sales_spike'
+                ).first()
+                if exists:
+                    continue
                 anom = Anomaly(
                     product_id=product_id,
                     anomaly_type='sales_spike',
