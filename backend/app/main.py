@@ -23,6 +23,7 @@ app = FastAPI(
     version="1.0.0"
 )
 origins = [o.strip().rstrip("/") for o in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",")]
+print("CORS origins:", origins)
 # CORS - React ko access de
 app.add_middleware(
     CORSMiddleware,
