@@ -22,8 +22,9 @@ app = FastAPI(
     title="Smart Retail Inventory",
     version="1.0.0"
 )
-origins = [o.strip().rstrip("/") for o in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173,https://smart-retail-seven.vercel.app").split(",")]
-print("CORS env keys:", [repr(k) for k in os.environ if "CORS" in k.upper()])
+origins = [o.strip().rstrip("/") for o in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",")]
+origins.append("https://smart-retail-seven.vercel.app")   # ← ye nayi line
+print("CORS origins:", origins)
 print("DB:", engine.dialect.name)
 print("DB:", engine.dialect.name)
 print("CORS origins:", origins)
