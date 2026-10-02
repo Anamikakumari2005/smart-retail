@@ -30,7 +30,7 @@ export default function Login() {
         localStorage.removeItem('user');
     }
 
-    navigate('/');
+    window.location.href = '/';
 } catch (err) {
     setError(err.response?.data?.detail || 'Login failed');
 } finally {
@@ -208,7 +208,7 @@ export default function Login() {
                                 boxSizing: 'border-box',
                                 backgroundColor: '#f9fafb'
                             }}
-                            placeholder="admin@test.com"
+                            placeholder="abc"
                             required
                         />
                     </div>

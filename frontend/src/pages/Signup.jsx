@@ -16,20 +16,16 @@ const [email, setEmail] = useState('')
         setLoading(true)
         setError('')
 
-        try {
-            const response = await axiosInstance.post('/api/auth/register', {
-                username: username,
-                email: email,
-                password: password,
-                role: role
-            })
+       try {
+    const response = await axiosInstance.post('/api/auth/register', {
+        username: username,
+        email: email,
+        password: password,
+        role: role
+    })
 
-            // Token store karo
-            localStorage.setItem('token', response.data.access_token)
-            localStorage.setItem('user', JSON.stringify(response.data.user))
-
-            navigate('/')
-        }
+    navigate('/login')
+}
         catch (err) {
             setError(err.response?.data?.detail || 'Signup failed')
         }
