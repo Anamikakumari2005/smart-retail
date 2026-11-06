@@ -1,3 +1,2 @@
-# hyy babe
-def divide(a, b):
-    return a / 0
+def multiply(a, b):
+    return a * undefined_variable
